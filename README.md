@@ -11,3 +11,18 @@ Emmanuelmwasaru/Emmanuelmwasaru is a ✨ special ✨ repository because its `REA
 You can click the Preview link to take a look at your changes.
 --->
 npm install
+import random
+
+def generate_random_numbers(count, start, end):
+    random_numbers = []
+    for _ in range(count):
+        random_numbers.append(random.randint(start, end))
+    return random_numbers
+
+if __name__ == "__main__":
+    count = 100  # Number of random numbers to generate
+    start_range = 1  # Start of the range
+    end_range = 1000  # End of the range
+
+    random_numbers = generate_random_numbers(count, start_range, end_range)
+    print("Generated Random Numbers:", random_numbers)
