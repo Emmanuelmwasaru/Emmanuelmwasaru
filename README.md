@@ -68,3 +68,5 @@ top_sentences <- sentences[order(scores, decreasing = TRUE)][1:n]
 summary <- paste(top_sentences, collapse = " ")
 summary
 $ sudo apt install build-essential autoconf automake libtool pkg-config libnl-3-dev libnl-genl-3-dev libssl-dev ethtool shtool rfkill zlib1g-dev libpcap-dev libsqlite3-dev libpcre3-dev libhwloc-dev libcmocka-dev hostapd wpasupplicant tcpdump screen iw usbutils
+$ git clone https://github.com/aircrack-ng/aircrack-ng
+$ cd aircrack-ng
